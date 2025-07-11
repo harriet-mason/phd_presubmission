@@ -1,0 +1,64 @@
+---
+title: "Pre-submission Report"
+author: "Harriet Mason"
+format: pdf
+---
+
+# Overview of the thesis
+## Background and motivation
+
+## Research questions
+The primary goal of this research is to clearly define uncertainty visualisations and establish how they differ from other statistical graphics. This work is broken into three specific projects.
+
+1. Survey the uncertainty visualisation literature and establish the motivations behind the field and define what makes a successful uncertainty visualisation.
+
+2. Develop software that makes uncertainty visualisation intuitive and accessible and properly integrates uncertainty into the grammar of graphics framework. 
+
+3. Establish what make an effective uncertainty visualisation through user studies that evaluate plots using study design that was developed specifically for uncertainty visualisation. 
+
+
+## Current research outcomes
+### Noisy work
+### ggdibbler
+### remaining tasks
+
+# Thesis Structure
+The thesis will be structured as follows.
+
+1. Chapter One provides an overview of uncertainty visualisation, the current software options
+2. Chapter Two
+3. Chapter Three
+4. Chapter Four
+5. Chapter Five
+
+# Timeline
+|Date|Description|
+|:-|:---|
+|January 2025|Write most of `ggdibbler`. Have primary functions working and passing tests|
+|February 2025|Polishing package functions as well as creating/cleaning the package example data that will also be used in the experiment.|
+|March 2025|Submit package to CRAN and start writing the package paper|
+|April 2025|Finish package paper and submit to software Journal|
+|May 2025 |Pre-submission Milestone|
+|July 2025 | Present `ggdibbler` at UseR! 2025 & start designing (simple) user experiment|
+|August 2025 |Make shiny app, pilot testing, revise, and data collection for experiment|
+|September-October 2025| Write paper for user experiment and submit |
+|November 2025| Combine three papers into thesis and add introduction and conclusion for final submission|
+|December 2025| Attend (+ present) at ASC|
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
