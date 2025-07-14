@@ -247,7 +247,7 @@ grid.arrange(p1, p2, nrow = 1)
 ::::
 
 
-## How do we please both my mother???
+## How do we please my mother??? <br> (and also me)
 ```{r}
 #| include: false
 ggplot(toy_temp_mean) +
@@ -261,17 +261,17 @@ ggplot(toy_temp_mean) +
 ![](images/img2.jpeg)
 
 
-## Solution: Add Axis for Uncertainty
+## Solution: add an axis for uncertainty
 ![](images/img10.jpeg)
 
 ## Does this work? Not really {.smaller}
 :::: {.columns}
 
-::: {.column width="25%"}
+::: {.column width="30%"}
 ![](images/img11.jpeg)
 :::
 
-::: {.column width="75%"}
+::: {.column width="70%"}
 
 - Pro
   - Included uncertainty and increased transparency
@@ -285,23 +285,37 @@ ggplot(toy_temp_mean) +
 :::
 ::::
 
-
-
 ## Why doesn't this work? 
 - Uncertainty is not just another variable…
   - We do not have a high-dimension visualisation or basic heuristic problem
 
-- Bivariate Map
-  - Two dimensions = No interference
+- Two dimensions = No interference
   - Normal visualization = GOOD!
   - Uncertainty visualization = BAD! 
 
 ## Signal suppression 
+
+![](images/img12.jpeg){fig-align="center"}
+
 - Visualising uncertainty as noise.
 - The error (noise) *should* interfere with our reading of the temperature (signal)
 - But *only* when the signal has high error
 
-## 
+
+
+## Solution: blend the colours together!
+
+## Does this work? Kind of...
+
+## Solution: simulate a sample
+
+## Does this work? Almost...
+
+
+# Chapter 2: ggdibbler
+
+# Chapter 3: Visualisation Experiment
+
 
 ## ggdibbler use
 ```{r}
