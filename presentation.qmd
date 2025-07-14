@@ -63,6 +63,7 @@ options(digits=3,
   - Based on AEMO case study
   - Status:
     - I hope someone at AEMO answers my emails
+  - This is more of an "if I get to it" chapter as Chapter 1 and 2 are already quite long
 
 
 
@@ -625,6 +626,55 @@ ggplot(toy_temp_dist) +
 
 ## Where are we?
 - Now that the graphics are easy to make, test if they work
+- Our method thus far
+  - Looking at a graphic and going "neat" 
+  - Not exactly rigorous science
+
+## Common Plot Evaluation Methods
+- Confidence
+  - What is the mean of this variable? How certain are you?
+  - Errors conflated with poor plot design
+
+- Value extraction
+  - What is the standard error of this estimate?
+  - Can't directly ask about error in visualisation experiments
+
+## Issues with testing Signal Supression
+- Unlike in purely mathematical statistics, the "estimate" is not set beforehand
+- You can extract multiple statistics from a single visualisation
+- The "estimate" becomes whichever statistic you ask about
+
+## Issues with testing Signal Supression
+:::: {.columns}
+
+::: {.column width="50%"}
+![](images/img26.jpeg)
+:::
+
+::: {.column width="50%"}
+- Then "uncertainty visualisation" experiments will follow the same results as "normal" visualisation experiments
+  - Perceptual hierarchy, gestalt principles, etc.
+
+:::
+
+::::
+
+
+
+
+## Issues with testing Signal Supression
+- Need to develop methods that allow you to measure the effect of noise without directly asking about it
+
+## AEMO case study
+- AEMO fund my scholarship
+- Ideally, this experiment would be built around an issue faced by AEMO
+- Currently in talking with their research partnerships lead
+  - Fingers crossed I am not ghosted.
+
+## Chapter 3: Summary
+- Signal Suppression requires new evaluation methods
+- Have not started this chapter
+  - I'll do it if time permits.
 
 # Timeline
 ## Timeline {.smaller}
@@ -637,16 +687,9 @@ ggplot(toy_temp_dist) +
 ## Timeline {.smaller}
 |Date|Description|
 |:-|:---|
-|October 2025|	Write paper for the user experiment. |
+|October 2025|	Write paper for the evaluation experiment. |
 |November 2025 | Finalise and submit user experiment paper. Compile all three papers into the thesis and write the introduction and conclusion. |
-|December 2025 |	Present final versions of ggdibbler and user experiment at ASC. Submit thesis. |
-
-# Conclusion
-
-## Conclusion
-- Do signal supression when communicating statistics.
-- Use `ggdibbler` to avoid suffering
-
+|December 2025 |	Present final versions of ggdibbler and evaluation experiment at ASC. Submit thesis. |
 
 # End
 
