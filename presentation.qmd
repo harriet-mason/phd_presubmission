@@ -27,8 +27,17 @@ library(distributional)
 options(digits=3)
 ```
 
-# Task: Communicate a Spatial Trend
-## A hypothetical example
+
+# Introduction: Communicate a Spatial Trend
+
+## Emergency!
+- Reports that temperature in Iowa is weird as hell
+- Very serious
+- Need to check if this is true and communicate it to the public
+
+## Fake temperatures in Iowa
+- Maintain privacy because doing science in Iowa is now a crime.
+
 ```{r}
 toy_temp |>
   as_tibble() |>
@@ -43,7 +52,6 @@ toy_temp |>
     recorded_temp = html("Recorded Temp"))
 ```
 
-
 ## Looking at the data
 ```{r}
 ggplot(toy_temp) +
@@ -54,7 +62,7 @@ ggplot(toy_temp) +
   scale_color_distiller(palette = "YlOrRd", direction= 1) +
   xlab("Longitude") +
   ylab("Latitude") +
-  labs(colour = "Temperature")
+  labs(colour = "Temperature") 
 ```
 
 ## Calculating Estimates
@@ -78,14 +86,36 @@ toy_temp_mean |>
 
 ## Choropleth Map
 ```{r}
-ggplot(toy_temp_mean) +
+p_choro <- ggplot(toy_temp_mean) +
   geom_sf(aes(geometry=county_geometry, fill=temp_mean)) +
   theme_minimal() +
   scale_fill_distiller(palette = "YlOrRd", direction= 1) +
   xlab("Longitude") +
   ylab("Latitude") +
   labs(fill = "Temperature")
+p_choro
 ```
+
+## Why communicate with a visualisation?
+:::: {.columns}
+
+::: {.column width="40%"}
+- "Ah I see"
+- Utilises lizard brain
+- Conveys a large amount of information at once
+:::
+
+::: {.column width="60%"}
+```{r}
+p_choro
+```
+:::
+
+::::
+
+
+
+
 
 ## Estimate as a Mean and Standard Error
 ```{r}
@@ -148,6 +178,40 @@ ggplot(toy_temp_mean) +
   - e.g. Statistical summaries
   - e.g. Using data from ABS (or other government organisation)
 
+## This talk
+1) Introduction: A motivating example 
+2) Thesis Summary:
+  - Overview & Progress to date
+  - Chapter 1: What is signal suppression?
+  - Chapter 2: `ggdibbler`
+  - Chapter 3: A visualisation experiment
+3) Miscelaneous loose ends
+  - Timeline
+  - Future work
+  - Potential limitations
+5) Conclusion 
+
+# Thesis Overview
+## Thesis Overview
+- Chapter 1: The Noisy Work of Uncertainty Visualisation
+  - Literarture review
+  - Define problem
+  - Identify gaps (for chapter 2 and 3)
+
+- Chapter 2: `ggdibbler` package 
+  - `ggplot2` extension
+
+- Chapter 3: Visualisation experiment
+  - Based on AEMO case study
+
+## Progress to date
+- Chapter 1 was submitted to the journal *Annual Reviews of Statistics and It's Applications* for publication, and is now an invited contribution to Volume 14 of the Journal.
+- `ggdibbler` has been submitted to CRAN 
+- Currently working on `ggdibbler` paper 
+
+
+
+
 ## ggdibbler use
 ```{r}
 # Plot Distribution Data
@@ -160,3 +224,23 @@ ggplot(toy_temp_dist) +
   ylab("Latitude") +
   labs(fill = "Temperature")
 ```
+
+## Timeline
+|Date|Description|
+|:-|:---|
+|July 2025|Submit `ggdibbler` to CRAN. Pre-submission milestone. Implement VSUP elements in package. |
+|August 2025|Present `ggdibbler` at useR! 2025 and receive feedback. Finish the `ggdibbler` paper and submit to the Journal of Statistical Software. Decide on a case study for the experiment in consultation with an AEMO research representative. |
+|September 2025| Develop Shiny app, conduct pilot testing, revise design, and begin data collection for experiment.|
+|October 2025|	Write paper for the user experiment. |
+|November 2025 | Finalise and submit user experiment paper. Compile all three papers into the thesis and write the introduction and conclusion. |
+|December 2025 |	Present final versions of ggdibbler and user experiment at ASC. Submit thesis. |
+
+
+## Future Work
+- Different types of plots (e.g. scatter plot)
+- Different data types for the uncertainty. Currently only have uncertainty in estimates, but could have uncertainty in location in a map for example.
+- Alternative variations, e.g. bivariate map.
+  - Could implement these methods across different plot types. e.g. what does the space transformation in the bivariate map look like when the x and y component are both spatial instead of coloured.
+- Entirely new approaches
+- Want to add dibble object so that it is automatic.
+- Should include density objects as a "stat_identity" option for the sake of completeness.
