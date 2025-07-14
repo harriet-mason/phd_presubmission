@@ -26,6 +26,7 @@ library(gt)
 options(digits=3)
 ```
 
+# Task: Communicate a Spatial Trend
 ## A hypothetical example
 ```{r}
 toy_temp |>
@@ -38,25 +39,40 @@ toy_temp |>
   cols_label( 
     scientistID = html("Scientist ID"), 
     county_name = html("County Name"), 
-    recorded_temp = html("Recorded Temp") 
-  )
+    recorded_temp = html("Recorded Temp"))
 ```
 
-## Task: Communicate a Spatial Trend
 
-Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
-
-## Bullets
-
-When you click the **Render** button a document will be generated that includes:
-
--   Content authored with markdown
--   Output from executable code
-
-## Code
-
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
-
+## Looking at the data
 ```{r}
-1 + 1
+ggplot(toy_temp) +
+  geom_sf(aes(geometry=county_geometry), fill="white") +
+  geom_jitter(aes(x=county_longitude, y=county_latitude, colour=recorded_temp, alpha=0.5), 
+              width=5000, height =5000, alpha=0.7) +
+  theme_minimal() +
+  scale_color_distiller(palette = "YlOrRd", direction= 1) +
+  xlab("Longitude") +
+  ylab("Latitude")
 ```
+
+## Calculating Estimates
+```{r}
+# Mean data
+toy_temp_mean <- toy_temp |> 
+  group_by(county_name) |>
+  summarise(temp_mean = mean(recorded_temp)) 
+
+toy_temp_mean |> 
+  as_tibble() |>
+  select(county_name, temp_mean) |>
+  head(10) |>
+  gt()|>
+  tab_header(title = "Average Citizen Scientist Temperature",
+             subtitle = "Estimates for Iowa Counties") |>
+  cols_label(
+    county_name = html("County Name"), 
+    temp_mean = html("Mean Temperature"))
+```
+
+## Choropleth Map
+
