@@ -23,6 +23,7 @@ title-slide-attributes:
 library(tidyverse)
 library(ggdibbler)
 library(gt)
+library(distributional)
 options(digits=3)
 ```
 
@@ -52,7 +53,8 @@ ggplot(toy_temp) +
   theme_minimal() +
   scale_color_distiller(palette = "YlOrRd", direction= 1) +
   xlab("Longitude") +
-  ylab("Latitude")
+  ylab("Latitude") +
+  labs(colour = "Temperature")
 ```
 
 ## Calculating Estimates
@@ -75,4 +77,86 @@ toy_temp_mean |>
 ```
 
 ## Choropleth Map
+```{r}
+ggplot(toy_temp_mean) +
+  geom_sf(aes(geometry=county_geometry, fill=temp_mean)) +
+  theme_minimal() +
+  scale_fill_distiller(palette = "YlOrRd", direction= 1) +
+  xlab("Longitude") +
+  ylab("Latitude") +
+  labs(fill = "Temperature")
+```
 
+## Estimate as a Mean and Standard Error
+```{r}
+toy_temp_est <- toy_temp |> 
+  group_by(county_name) |>
+  summarise(temp_mean = mean(recorded_temp),
+            temp_se = sd(recorded_temp)/sqrt(n())) 
+
+toy_temp_est |> 
+  as_tibble() |>
+  select(county_name, temp_mean, temp_se) |>
+  head(10) |>
+  gt()|>
+  tab_header(title = "Average Citizen Scientist Temperature",
+             subtitle = "Estimates for Iowa Counties") |>
+  tab_spanner(
+    label = "Temperature",
+    columns = c(temp_mean, temp_se)) |>
+  cols_label(
+    county_name = html("County Name"), 
+    temp_mean = html("Mean"),
+    temp_se = html("Standard Error"))
+```
+
+## Estimate as a Distribution
+
+```{r}
+toy_temp_dist <- toy_temp_est |> 
+  mutate(temp_dist = dist_normal(temp_mean, temp_se)) |>
+  select(county_name, temp_dist) 
+
+toy_temp_dist |> 
+  as_tibble() |>
+  select(county_name, temp_dist) |>
+  head(10) |>
+  gt() |>
+  tab_header(title = "Average Citizen Scientist Temperature",
+             subtitle = "Estimates for Iowa Counties") |>
+  cols_label(
+    county_name = html("County Name"), 
+    temp_dist = html("Mean Temperature"))
+```
+
+*(praise be unto Mitch's distributional Package)*
+
+## How to include in previous map?
+```{r}
+#| include: false
+ggplot(toy_temp_mean) +
+  geom_sf(aes(geometry=county_geometry), fill="white") +
+  theme_minimal() +
+  xlab("Longitude") +
+  ylab("Latitude") +
+  labs(fill = "Temperature")
+```
+![](images/img2.jpeg)
+
+## Other Cases
+- Visualisations where values are actually estimates
+  - e.g. Statistical summaries
+  - e.g. Using data from ABS (or other government organisation)
+
+## ggdibbler use
+```{r}
+# Plot Distribution Data
+ggplot(toy_temp_dist) +
+  geom_sf_sample(aes(geometry=county_geometry, fill=temp_dist),  linewidth=0.1) +
+  geom_sf(aes(geometry = county_geometry), fill=NA, linewidth=1) +
+  theme_minimal() +
+  scale_fill_distiller(palette = "YlOrRd", direction= 1) +
+  xlab("Longitude") +
+  ylab("Latitude") +
+  labs(fill = "Temperature")
+```
