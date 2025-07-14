@@ -1,5 +1,5 @@
 ---
-title: "Uncertainty Visualisation for Signal Supression"
+title: "Uncertainty Visualisation for Signal Suppression"
 subtitle: "Pre-submission Milestone"
 author: "Harriet Mason"
 bibliography: references.bib
@@ -39,13 +39,11 @@ options(digits=3,
   - Chapter 2: Software
   - Chapter 3: Visualisation Experiment
 - Timeline
-- Potential limitations
-- Conclusion & Future Work
 
 ## Thesis Overview & Progress {.smaller}
 - Chapter 1: The Noisy Work of Uncertainty Visualisation
-  - Work through existing visualisation approaches
-  - What is signal suppression? What allows us to do it well?
+  - Review existing visualisation approaches
+  - What is signal suppression? How do we do it well?
   - Status:
     - Finished and submitted to the journal *Annual Reviews of Statistics and It's Applications* 
     - Now an invited contribution to Volume 14 of the Journal.
@@ -59,22 +57,18 @@ options(digits=3,
 ## Thesis Overview & Progress {.smaller}
 
 - Chapter 3: Visualisation experiment
-  - Evaluate plots based on how effective they are at signal suppression
-  - Based on AEMO case study
+  - Evaluate plots based on ability to do signal suppression
+  - Based on Australian Energy Market Operator (AEMO) case study
+  -   They fund my scholarship
   - Status:
     - I hope someone at AEMO answers my emails
-  - This is more of an "if I get to it" chapter as Chapter 1 and 2 are already quite long
 
 
 
 # Chapter 1: <br> The Noisy Work of Uncertainty Visualisation
 
-## A single example: choropleth map
-- We are going to work through a single plot for this talk
-- It makes the ideas we are talking about easier to understand
-- Concepts are more broadly appliciable
 
-## A strange example I invented for this talk
+## An example I made up for this talk
 :::: {.columns}
 
 ::: {.column width="40%"}
@@ -84,11 +78,19 @@ options(digits=3,
 ::: {.column width="60%"}
 - Reports that average temperatures in Iowa are very odd!
 - Stumping climate scientists who are looking at it!!
-- Need to understand and communicate this weird temperature issue!!!
+- Need to understand this weird temperature issue!!!
 
 :::
 
 ::::
+
+## An example I made up for this talk
+*(aside)*
+
+- We are going to look at variations of one plot
+  - The choropleth map
+- It makes the ideas we are talking about easier to understand
+- Concepts are more broadly appliciable than this one plot
 
 ## Temperatures in Iowa
 :::: {.columns}
@@ -394,7 +396,7 @@ ggplot(toy_temp_mean) +
   - Anything else requires you to manually design the palette
   - Make every component separately then combine
 - `Vizumap` 
-  - similar issues to biscale
+  - similar issues to `biscale`
 
 
 ## Ideal bivariate palette code
@@ -411,7 +413,7 @@ ggplot(data) |>
               fill_saturation = standard_error))
 ```
 
-## For example: biscale code
+## For example: `biscale` code
 ```{r}
 # set large variance multiplier
 m <- 3
@@ -460,7 +462,7 @@ finalPlot <- ggdraw() +
   draw_plot(legend, 0.2, .65, 0.2, 0.2)
 ```
 
-## For example: biscale plot
+## For example: `biscale` plot
 - I couldn't even get it to work. This is the plot generated:
 
 ```{r}
@@ -470,7 +472,7 @@ finalPlot
 - Package hasn't been updated in 3 years.
 
 ## What exists - VSUP
-- Nothing for VSUP specifcially
+- Nothing for VSUP specifically
   - Would need to manually create one using a bivariate palette
   
   
@@ -501,7 +503,7 @@ ggplot(data) |>
               fill = random_variable)) 
 ```
 
-## Vizumap code
+## `Vizumap` code
 ```{r}
 #| eval: false
 #| echo: true
@@ -569,7 +571,7 @@ toy_temp_dist |>
 :::
 
 ::: {.column width="60%"}
-- `distributional` lets you store distributions in a tibble
+- `distributional` lets you store distributions in a `tibble`
 - Riding those coat tails all the way to a CRAN submission
 :::
 
@@ -618,7 +620,7 @@ ggplot(toy_temp_dist) +
   - I half did it and then gave up
   - `ggplot2` was *not* designed for accessing colour space directly
 - Implement `ggdibbler` variations of other `geom_*()` functions
-  - e.g. `geom_point()`, `geom_distribution()`, etc
+  - e.g. `geom_point()`, `geom_distribution()`, etc.
 - Integrate `dibble` object so that `geom_sf()` automatically does `geom_sf_sample()` if you pass a distribution in
 
 
@@ -639,12 +641,12 @@ ggplot(toy_temp_dist) +
   - What is the standard error of this estimate?
   - Can't directly ask about error in visualisation experiments
 
-## Issues with testing Signal Supression
+## Issues with testing Signal Suppression
 - Unlike in purely mathematical statistics, the "estimate" is not set beforehand
 - You can extract multiple statistics from a single visualisation
 - The "estimate" becomes whichever statistic you ask about
 
-## Issues with testing Signal Supression
+## Issues with testing Signal Suppression
 :::: {.columns}
 
 ::: {.column width="50%"}
@@ -662,11 +664,10 @@ ggplot(toy_temp_dist) +
 
 
 
-## Issues with testing Signal Supression
+## Issues with testing Signal Suppression
 - Need to develop methods that allow you to measure the effect of noise without directly asking about it
 
 ## AEMO case study
-- AEMO fund my scholarship
 - Ideally, this experiment would be built around an issue faced by AEMO
 - Currently in talking with their research partnerships lead
   - Fingers crossed I am not ghosted.
@@ -688,8 +689,8 @@ ggplot(toy_temp_dist) +
 |Date|Description|
 |:-|:---|
 |October 2025|	Write paper for the evaluation experiment. |
-|November 2025 | Finalise and submit user experiment paper. Compile all three papers into the thesis and write the introduction and conclusion. |
-|December 2025 |	Present final versions of ggdibbler and evaluation experiment at ASC. Submit thesis. |
+|November 2025 | Finalise and submit evaluation experiment paper. Compile all three papers into the thesis and write the introduction and conclusion. |
+|December 2025 |	Present final versions of `ggdibbler` and evaluation experiment at ASC. Submit thesis. |
 
 # End
 
@@ -701,11 +702,10 @@ ggplot(toy_temp_dist) +
   - e.g. Using data from ABS (or other government organisation)
 
 
-## ggdist
+## `ggdist`
 ![](images/img22.jpeg)
 
 
-<!--
 ## Looking at the data
 ```{r}
 ggplot(toy_temp) +
@@ -719,57 +719,18 @@ ggplot(toy_temp) +
   labs(colour = "Temperature") 
 ```
 
-## Estimate as a Mean and Standard Error
-```{r}
-toy_temp_est <- toy_temp |> 
-  group_by(county_name) |>
-  summarise(temp_mean = mean(recorded_temp),
-            temp_se = sd(recorded_temp)/sqrt(n())) 
-
-toy_temp_est |> 
-  as_tibble() |>
-  select(county_name, temp_mean, temp_se) |>
-  head(10) |>
-  gt()|>
-  tab_header(title = "Average Citizen Scientist Temperature",
-             subtitle = "Estimates for Iowa Counties") |>
-  tab_spanner(
-    label = "Temperature",
-    columns = c(temp_mean, temp_se)) |>
-  cols_label(
-    county_name = "County Name", 
-    temp_mean = "Mean",
-    temp_se = "Standard Error")
+## Spell check
+```{r, include=FALSE, eval=FALSE}
+library(spelling)
+qmd <- "presentation.qmd"
+ignore <- readLines("WORDLIST")
+check_spelling <- spell_check_files(
+  qmd,
+  ignore = ignore,
+  lang = "en_GB"
+)
+if (nrow(check_spelling) > 0) {
+  print(check_spelling)
+  stop("Check spelling in Qmd files!")
+}
 ```
-## Estimate as a Distribution
-```{r}
-# set large variance multiplier
-m <- 2
-toy_temp_est <- toy_temp |> 
-  group_by(county_name) |>
-  summarise(temp_mean = mean(recorded_temp),
-            temp_se_low = sd(recorded_temp)/sqrt(n()),
-            temp_se_high = 2*temp_se_low) 
-```
-
-```{r}
-#| eval: false
-toy_temp_dist <- toy_temp_est |> 
-  mutate(temp_dist_low = dist_normal(temp_mean, temp_se_low),
-         temp_dist_high = dist_normal(temp_mean, temp_se_high)) |>
-  select(county_name, temp_dist_low, temp_dist_high) 
-
-toy_temp_dist |> 
-  as_tibble() |>
-  select(county_name, temp_dist_low, temp_dist_high) |>
-  head(10) |>
-  gt() |>
-  tab_header(title = "Average Temperature",
-             subtitle = "Estimates for Iowa Counties") |>
-  cols_label(county_name = "County Name", 
-             temp_dist = "Mean Temperature")
-```
-
-*(praise be unto Mitch's distributional Package)*
-
--->
