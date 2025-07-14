@@ -11,7 +11,7 @@ format:
 editor_options: 
   chunk_output_type: console
 title-slide-attributes:
-  data-background-image: /images/img1.jpg
+  data-background-image: /images/img1b.jpeg
   data-background-size: contain
   data-background-opacity: "0.5"
   smaller: true
