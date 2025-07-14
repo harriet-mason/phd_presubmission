@@ -17,7 +17,32 @@ title-slide-attributes:
   smaller: true
 ---
 
-## Quarto
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+library(ggdibbler)
+library(gt)
+options(digits=3)
+```
+
+## A hypothetical example
+```{r}
+toy_temp |>
+  as_tibble() |>
+  select(scientistID, county_name,recorded_temp) |>
+  head(10) |>
+  gt()|>
+  tab_header(title = "Citizen Scientist Temperature Collection",
+             subtitle = "Data from Iowa Counties") |>
+  cols_label( 
+    scientistID = html("Scientist ID"), 
+    county_name = html("County Name"), 
+    recorded_temp = html("Recorded Temp") 
+  )
+```
+
+## Task: Communicate a Spatial Trend
 
 Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
 
