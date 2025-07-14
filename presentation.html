@@ -342,41 +342,103 @@ Harriet Mason
 
 </section>
 <section>
-<section id="introduction-communicate-a-spatial-trend" class="title-slide slide level1 center">
-<h1>Introduction: Communicate a Spatial Trend</h1>
+<section id="talk-thesis-overview" class="title-slide slide level1 center">
+<h1>Talk (&amp; Thesis) Overview</h1>
 
 </section>
-<section id="emergency" class="slide level2">
-<h2>Emergency!</h2>
+<section id="this-talk" class="slide level2">
+<h2>This talk</h2>
 <ul>
-<li>Reports that temperature in Iowa is weird as hell!</li>
-<li>Very serious!!</li>
-<li>Need to communicate this weird temperature issue to the public!!!</li>
+<li>Thesis summary</li>
+<li>Timeline
+<ul>
+<li>Chapter 1: Literature review</li>
+<li>Chapter 2: Software</li>
+<li>Chapter 3: Visualisation Experiment</li>
+</ul></li>
+<li>Potential limitations</li>
+<li>Conclusion &amp; Future Work</li>
 </ul>
 </section>
-<section id="fake-temperatures-in-iowa" class="slide level2">
-<h2>Fake temperatures in Iowa</h2>
+<section id="thesis-overview-progress" class="slide level2 smaller">
+<h2>Thesis Overview &amp; Progress</h2>
+<ul>
+<li>Chapter 1: The Noisy Work of Uncertainty Visualisation
+<ul>
+<li>Work through existing visualisation approaches</li>
+<li>What is signal suppression? What allows us to do it well?</li>
+<li>Status:
+<ul>
+<li>Finished and submitted to the journal <em>Annual Reviews of Statistics and It’s Applications</em></li>
+<li>Now an invited contribution to Volume 14 of the Journal.</li>
+</ul></li>
+</ul></li>
+<li>Chapter 2: <code>ggdibbler</code> package
+<ul>
+<li><code>ggplot2</code> extension</li>
+<li>Status:
+<ul>
+<li>Package has been submitted to CRAN</li>
+<li>Currently working on paper</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="thesis-overview-progress-1" class="slide level2 smaller">
+<h2>Thesis Overview &amp; Progress</h2>
+<ul>
+<li>Chapter 3: Visualisation experiment
+<ul>
+<li>Evaluate plots based on how effective they are at signal suppression</li>
+<li>Based on AEMO case study</li>
+<li>Status:
+<ul>
+<li>I hope someone at AEMO answers my emails</li>
+</ul></li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="chapter-1-the-noisy-work-of-uncertainty-visualisation" class="title-slide slide level1 center">
+<h1>Chapter 1: <br> The Noisy Work of Uncertainty Visualisation</h1>
+
+</section>
+<section id="a-strange-emergency-i-invented-for-this-talk" class="slide level2">
+<h2>A strange emergency I invented for this talk</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img data-src="images/img0.jpg"></p>
+</div><div class="column" style="width:60%;">
+<ul>
+<li>Reports that average temperatures in Iowa are very odd!</li>
+<li>Stumping climate scientists who are looking at it!!</li>
+<li>Need to understand and communicate this weird temperature issue!!!</li>
+</ul>
+</div></div>
+</section>
+<section id="temperatures-in-iowa" class="slide level2">
+<h2>Temperatures in Iowa</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
-<div id="mshqixlyhj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mshqixlyhj table {
+<div id="ndrnkksrwu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ndrnkksrwu table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mshqixlyhj thead, #mshqixlyhj tbody, #mshqixlyhj tfoot, #mshqixlyhj tr, #mshqixlyhj td, #mshqixlyhj th {
+#ndrnkksrwu thead, #ndrnkksrwu tbody, #ndrnkksrwu tfoot, #ndrnkksrwu tr, #ndrnkksrwu td, #ndrnkksrwu th {
   border-style: none;
 }
 
-#mshqixlyhj p {
+#ndrnkksrwu p {
   margin: 0;
   padding: 0;
 }
 
-#mshqixlyhj .gt_table {
+#ndrnkksrwu .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -402,12 +464,12 @@ Harriet Mason
   border-left-color: #D3D3D3;
 }
 
-#mshqixlyhj .gt_caption {
+#ndrnkksrwu .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mshqixlyhj .gt_title {
+#ndrnkksrwu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -419,7 +481,7 @@ Harriet Mason
   border-bottom-width: 0;
 }
 
-#mshqixlyhj .gt_subtitle {
+#ndrnkksrwu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -431,7 +493,7 @@ Harriet Mason
   border-top-width: 0;
 }
 
-#mshqixlyhj .gt_heading {
+#ndrnkksrwu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -443,13 +505,13 @@ Harriet Mason
   border-right-color: #D3D3D3;
 }
 
-#mshqixlyhj .gt_bottom_border {
+#ndrnkksrwu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mshqixlyhj .gt_col_headings {
+#ndrnkksrwu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -464,7 +526,7 @@ Harriet Mason
   border-right-color: #D3D3D3;
 }
 
-#mshqixlyhj .gt_col_heading {
+#ndrnkksrwu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -484,7 +546,7 @@ Harriet Mason
   overflow-x: hidden;
 }
 
-#mshqixlyhj .gt_column_spanner_outer {
+#ndrnkksrwu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -496,15 +558,15 @@ Harriet Mason
   padding-right: 4px;
 }
 
-#mshqixlyhj .gt_column_spanner_outer:first-child {
+#ndrnkksrwu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mshqixlyhj .gt_column_spanner_outer:last-child {
+#ndrnkksrwu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mshqixlyhj .gt_column_spanner {
+#ndrnkksrwu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -516,11 +578,11 @@ Harriet Mason
   width: 100%;
 }
 
-#mshqixlyhj .gt_spanner_row {
+#ndrnkksrwu .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mshqixlyhj .gt_group_heading {
+#ndrnkksrwu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -546,7 +608,7 @@ Harriet Mason
   text-align: left;
 }
 
-#mshqixlyhj .gt_empty_group_heading {
+#ndrnkksrwu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -561,15 +623,15 @@ Harriet Mason
   vertical-align: middle;
 }
 
-#mshqixlyhj .gt_from_md > :first-child {
+#ndrnkksrwu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mshqixlyhj .gt_from_md > :last-child {
+#ndrnkksrwu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mshqixlyhj .gt_row {
+#ndrnkksrwu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -588,7 +650,7 @@ Harriet Mason
   overflow-x: hidden;
 }
 
-#mshqixlyhj .gt_stub {
+#ndrnkksrwu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -601,7 +663,7 @@ Harriet Mason
   padding-right: 5px;
 }
 
-#mshqixlyhj .gt_stub_row_group {
+#ndrnkksrwu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -615,15 +677,15 @@ Harriet Mason
   vertical-align: top;
 }
 
-#mshqixlyhj .gt_row_group_first td {
+#ndrnkksrwu .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mshqixlyhj .gt_row_group_first th {
+#ndrnkksrwu .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mshqixlyhj .gt_summary_row {
+#ndrnkksrwu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -633,16 +695,16 @@ Harriet Mason
   padding-right: 5px;
 }
 
-#mshqixlyhj .gt_first_summary_row {
+#ndrnkksrwu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mshqixlyhj .gt_first_summary_row.thick {
+#ndrnkksrwu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mshqixlyhj .gt_last_summary_row {
+#ndrnkksrwu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -652,7 +714,7 @@ Harriet Mason
   border-bottom-color: #D3D3D3;
 }
 
-#mshqixlyhj .gt_grand_summary_row {
+#ndrnkksrwu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -662,7 +724,7 @@ Harriet Mason
   padding-right: 5px;
 }
 
-#mshqixlyhj .gt_first_grand_summary_row {
+#ndrnkksrwu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -672,7 +734,7 @@ Harriet Mason
   border-top-color: #D3D3D3;
 }
 
-#mshqixlyhj .gt_last_grand_summary_row_top {
+#ndrnkksrwu .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -682,11 +744,11 @@ Harriet Mason
   border-bottom-color: #D3D3D3;
 }
 
-#mshqixlyhj .gt_striped {
+#ndrnkksrwu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mshqixlyhj .gt_table_body {
+#ndrnkksrwu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -695,7 +757,7 @@ Harriet Mason
   border-bottom-color: #D3D3D3;
 }
 
-#mshqixlyhj .gt_footnotes {
+#ndrnkksrwu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -709,7 +771,7 @@ Harriet Mason
   border-right-color: #D3D3D3;
 }
 
-#mshqixlyhj .gt_footnote {
+#ndrnkksrwu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -718,7 +780,7 @@ Harriet Mason
   padding-right: 5px;
 }
 
-#mshqixlyhj .gt_sourcenotes {
+#ndrnkksrwu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -732,7 +794,7 @@ Harriet Mason
   border-right-color: #D3D3D3;
 }
 
-#mshqixlyhj .gt_sourcenote {
+#ndrnkksrwu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -740,72 +802,72 @@ Harriet Mason
   padding-right: 5px;
 }
 
-#mshqixlyhj .gt_left {
+#ndrnkksrwu .gt_left {
   text-align: left;
 }
 
-#mshqixlyhj .gt_center {
+#ndrnkksrwu .gt_center {
   text-align: center;
 }
 
-#mshqixlyhj .gt_right {
+#ndrnkksrwu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mshqixlyhj .gt_font_normal {
+#ndrnkksrwu .gt_font_normal {
   font-weight: normal;
 }
 
-#mshqixlyhj .gt_font_bold {
+#ndrnkksrwu .gt_font_bold {
   font-weight: bold;
 }
 
-#mshqixlyhj .gt_font_italic {
+#ndrnkksrwu .gt_font_italic {
   font-style: italic;
 }
 
-#mshqixlyhj .gt_super {
+#ndrnkksrwu .gt_super {
   font-size: 65%;
 }
 
-#mshqixlyhj .gt_footnote_marks {
+#ndrnkksrwu .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mshqixlyhj .gt_asterisk {
+#ndrnkksrwu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mshqixlyhj .gt_indent_1 {
+#ndrnkksrwu .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mshqixlyhj .gt_indent_2 {
+#ndrnkksrwu .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mshqixlyhj .gt_indent_3 {
+#ndrnkksrwu .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mshqixlyhj .gt_indent_4 {
+#ndrnkksrwu .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mshqixlyhj .gt_indent_5 {
+#ndrnkksrwu .gt_indent_5 {
   text-indent: 25px;
 }
 
-#mshqixlyhj .katex-display {
+#ndrnkksrwu .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#mshqixlyhj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ndrnkksrwu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -893,23 +955,23 @@ Harriet Mason
 <div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
-<div id="knufzevdhf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#knufzevdhf table {
+<div id="eztzewuuzc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#eztzewuuzc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#knufzevdhf thead, #knufzevdhf tbody, #knufzevdhf tfoot, #knufzevdhf tr, #knufzevdhf td, #knufzevdhf th {
+#eztzewuuzc thead, #eztzewuuzc tbody, #eztzewuuzc tfoot, #eztzewuuzc tr, #eztzewuuzc td, #eztzewuuzc th {
   border-style: none;
 }
 
-#knufzevdhf p {
+#eztzewuuzc p {
   margin: 0;
   padding: 0;
 }
 
-#knufzevdhf .gt_table {
+#eztzewuuzc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -935,12 +997,12 @@ Harriet Mason
   border-left-color: #D3D3D3;
 }
 
-#knufzevdhf .gt_caption {
+#eztzewuuzc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#knufzevdhf .gt_title {
+#eztzewuuzc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -952,7 +1014,7 @@ Harriet Mason
   border-bottom-width: 0;
 }
 
-#knufzevdhf .gt_subtitle {
+#eztzewuuzc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -964,7 +1026,7 @@ Harriet Mason
   border-top-width: 0;
 }
 
-#knufzevdhf .gt_heading {
+#eztzewuuzc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -976,13 +1038,13 @@ Harriet Mason
   border-right-color: #D3D3D3;
 }
 
-#knufzevdhf .gt_bottom_border {
+#eztzewuuzc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#knufzevdhf .gt_col_headings {
+#eztzewuuzc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -997,7 +1059,7 @@ Harriet Mason
   border-right-color: #D3D3D3;
 }
 
-#knufzevdhf .gt_col_heading {
+#eztzewuuzc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1017,7 +1079,7 @@ Harriet Mason
   overflow-x: hidden;
 }
 
-#knufzevdhf .gt_column_spanner_outer {
+#eztzewuuzc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1029,15 +1091,15 @@ Harriet Mason
   padding-right: 4px;
 }
 
-#knufzevdhf .gt_column_spanner_outer:first-child {
+#eztzewuuzc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#knufzevdhf .gt_column_spanner_outer:last-child {
+#eztzewuuzc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#knufzevdhf .gt_column_spanner {
+#eztzewuuzc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1049,11 +1111,11 @@ Harriet Mason
   width: 100%;
 }
 
-#knufzevdhf .gt_spanner_row {
+#eztzewuuzc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#knufzevdhf .gt_group_heading {
+#eztzewuuzc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1079,7 +1141,7 @@ Harriet Mason
   text-align: left;
 }
 
-#knufzevdhf .gt_empty_group_heading {
+#eztzewuuzc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1094,15 +1156,15 @@ Harriet Mason
   vertical-align: middle;
 }
 
-#knufzevdhf .gt_from_md > :first-child {
+#eztzewuuzc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#knufzevdhf .gt_from_md > :last-child {
+#eztzewuuzc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#knufzevdhf .gt_row {
+#eztzewuuzc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1121,7 +1183,7 @@ Harriet Mason
   overflow-x: hidden;
 }
 
-#knufzevdhf .gt_stub {
+#eztzewuuzc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1134,7 +1196,7 @@ Harriet Mason
   padding-right: 5px;
 }
 
-#knufzevdhf .gt_stub_row_group {
+#eztzewuuzc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1148,15 +1210,15 @@ Harriet Mason
   vertical-align: top;
 }
 
-#knufzevdhf .gt_row_group_first td {
+#eztzewuuzc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#knufzevdhf .gt_row_group_first th {
+#eztzewuuzc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#knufzevdhf .gt_summary_row {
+#eztzewuuzc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1166,16 +1228,16 @@ Harriet Mason
   padding-right: 5px;
 }
 
-#knufzevdhf .gt_first_summary_row {
+#eztzewuuzc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#knufzevdhf .gt_first_summary_row.thick {
+#eztzewuuzc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#knufzevdhf .gt_last_summary_row {
+#eztzewuuzc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1185,7 +1247,7 @@ Harriet Mason
   border-bottom-color: #D3D3D3;
 }
 
-#knufzevdhf .gt_grand_summary_row {
+#eztzewuuzc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1195,7 +1257,7 @@ Harriet Mason
   padding-right: 5px;
 }
 
-#knufzevdhf .gt_first_grand_summary_row {
+#eztzewuuzc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1205,7 +1267,7 @@ Harriet Mason
   border-top-color: #D3D3D3;
 }
 
-#knufzevdhf .gt_last_grand_summary_row_top {
+#eztzewuuzc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1215,11 +1277,11 @@ Harriet Mason
   border-bottom-color: #D3D3D3;
 }
 
-#knufzevdhf .gt_striped {
+#eztzewuuzc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#knufzevdhf .gt_table_body {
+#eztzewuuzc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1228,7 +1290,7 @@ Harriet Mason
   border-bottom-color: #D3D3D3;
 }
 
-#knufzevdhf .gt_footnotes {
+#eztzewuuzc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1242,7 +1304,7 @@ Harriet Mason
   border-right-color: #D3D3D3;
 }
 
-#knufzevdhf .gt_footnote {
+#eztzewuuzc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1251,7 +1313,7 @@ Harriet Mason
   padding-right: 5px;
 }
 
-#knufzevdhf .gt_sourcenotes {
+#eztzewuuzc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1265,7 +1327,7 @@ Harriet Mason
   border-right-color: #D3D3D3;
 }
 
-#knufzevdhf .gt_sourcenote {
+#eztzewuuzc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1273,72 +1335,72 @@ Harriet Mason
   padding-right: 5px;
 }
 
-#knufzevdhf .gt_left {
+#eztzewuuzc .gt_left {
   text-align: left;
 }
 
-#knufzevdhf .gt_center {
+#eztzewuuzc .gt_center {
   text-align: center;
 }
 
-#knufzevdhf .gt_right {
+#eztzewuuzc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#knufzevdhf .gt_font_normal {
+#eztzewuuzc .gt_font_normal {
   font-weight: normal;
 }
 
-#knufzevdhf .gt_font_bold {
+#eztzewuuzc .gt_font_bold {
   font-weight: bold;
 }
 
-#knufzevdhf .gt_font_italic {
+#eztzewuuzc .gt_font_italic {
   font-style: italic;
 }
 
-#knufzevdhf .gt_super {
+#eztzewuuzc .gt_super {
   font-size: 65%;
 }
 
-#knufzevdhf .gt_footnote_marks {
+#eztzewuuzc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#knufzevdhf .gt_asterisk {
+#eztzewuuzc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#knufzevdhf .gt_indent_1 {
+#eztzewuuzc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#knufzevdhf .gt_indent_2 {
+#eztzewuuzc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#knufzevdhf .gt_indent_3 {
+#eztzewuuzc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#knufzevdhf .gt_indent_4 {
+#eztzewuuzc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#knufzevdhf .gt_indent_5 {
+#eztzewuuzc .gt_indent_5 {
   text-indent: 25px;
 }
 
-#knufzevdhf .katex-display {
+#eztzewuuzc .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#knufzevdhf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#eztzewuuzc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1434,6 +1496,26 @@ Harriet Mason
 <h2>Oh no, a hurdle</h2>
 
 <img data-src="images/img5.jpeg" class="r-stretch"></section>
+<section id="turns-out-mum-is-kind-of-right." class="slide level2">
+<h2>Turns out mum is kind of right….</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>We find out some citizen scientists are using some pretty old tools</li>
+<li>The standard error <strong>could</strong> be our estimate….
+<ul>
+<li>or it could be at least four times that.</li>
+</ul></li>
+<li>Does the spatial trend still exist in the high variance case?</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="images/img6.jpeg"></p>
+</div></div>
+</section>
+<section id="spot-the-difference" class="slide level2">
+<h2>Spot the difference</h2>
+
+<img data-src="presentation_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
 <section id="we-need-to-include-uncertainty" class="slide level2">
 <h2>We Need to Include Uncertainty</h2>
 <div class="columns">
@@ -1450,85 +1532,88 @@ Harriet Mason
 <p><img data-src="images/img7.jpeg"></p>
 </div></div>
 </section>
-<section id="turns-out-mum-is-kind-of-right." class="slide level2">
-<h2>Turns out mum is kind of right….</h2>
+<section id="we-are-also-communicating-with" class="slide level2">
+<h2>We are also communicating with…</h2>
+
+<img data-src="images/img8.jpeg" class="r-stretch"></section>
+<section id="uncertainty-visualisation-should" class="slide level2">
+<h2>Uncertainty visualisation should…</h2>
 <div class="columns">
-<div class="column" style="width:60%;">
+<div class="column" style="width:30%;">
+<p><img data-src="images/img9.jpeg"></p>
+</div><div class="column" style="width:70%;">
+<p><br></p>
+<ol type="1">
+<li>Reinforce justified signals</li>
+</ol>
 <ul>
-<li>We find out some citizen scientists are using some pretty old tools</li>
-<li>The standard error <strong>could</strong> be our estimate….
-<ul>
-<li>or it could be at least two times that.</li>
-</ul></li>
-<li>Does the spatial trend still exist in the high variance case?</li>
+<li>We want my mum to trust the results</li>
 </ul>
-</div><div class="column" style="width:40%;">
-<p><img data-src="images/img6.jpeg"></p>
+<ol start="2" type="1">
+<li>Hide signals that are just noise</li>
+</ol>
+<ul>
+<li>I don’t want to see something that isn’t there</li>
+</ul>
 </div></div>
 </section>
-<section id="spot-the-difference" class="slide level2">
-<h2>Spot the difference</h2>
-
-<img data-src="presentation_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
-<section id="how-do-we-please-my-mother" class="slide level2">
-<h2>How do we please my mother???</h2>
+<section id="how-do-we-please-both-my-mother" class="slide level2">
+<h2>How do we please both my mother???</h2>
 
 <img data-src="images/img2.jpeg" class="r-stretch"></section>
-<section id="this-talk" class="slide level2">
-<h2>This talk</h2>
-<ol type="1">
-<li>Introduction: A motivating example</li>
-<li>Thesis Summary:</li>
-</ol>
-<ul>
-<li>Overview &amp; Progress to date</li>
-<li>Chapter 1: What is signal suppression?</li>
-<li>Chapter 2: <code>ggdibbler</code></li>
-<li>Chapter 3: A visualisation experiment</li>
-</ul>
-<ol start="3" type="1">
-<li>Miscelaneous loose ends</li>
-</ol>
-<ul>
-<li>Timeline</li>
-<li>Future work</li>
-<li>Potential limitations</li>
-</ul>
-<ol start="5" type="1">
-<li>Conclusion</li>
-</ol>
-</section></section>
-<section>
-<section id="thesis-overview" class="title-slide slide level1 center">
-<h1>Thesis Overview</h1>
+<section id="solution-add-axis-for-uncertainty" class="slide level2">
+<h2>Solution: Add Axis for Uncertainty</h2>
 
+<img data-src="images/img10.jpeg" class="r-stretch"></section>
+<section id="does-this-work-not-really" class="slide level2 smaller">
+<h2>Does this work? Not really</h2>
+<div class="columns">
+<div class="column" style="width:25%;">
+<p><img data-src="images/img11.jpeg"></p>
+</div><div class="column" style="width:75%;">
+<ul>
+<li>Pro
+<ul>
+<li>Included uncertainty and increased transparency</li>
+</ul></li>
+<li>Cons
+<ul>
+<li>Non-existent signals are still visible so I am still getting scammed</li>
+<li>People can (and do) ignore the uncertainty</li>
+<li>2D palette is harder to read
+<ul>
+<li>Colour hues are not a simple 2D space</li>
+</ul></li>
+<li>Using saturation hurts accessibility</li>
+</ul></li>
+</ul>
+</div></div>
 </section>
-<section id="thesis-overview-1" class="slide level2">
-<h2>Thesis Overview</h2>
+<section id="why-doesnt-this-work" class="slide level2">
+<h2>Why doesn’t this work?</h2>
 <ul>
-<li>Chapter 1: The Noisy Work of Uncertainty Visualisation
+<li>Uncertainty is not just another variable…
 <ul>
-<li>Literarture review</li>
-<li>Define problem</li>
-<li>Identify gaps (for chapter 2 and 3)</li>
+<li>We do not have a high-dimension visualisation or basic heuristic problem</li>
 </ul></li>
-<li>Chapter 2: <code>ggdibbler</code> package
+<li>Bivariate Map
 <ul>
-<li><code>ggplot2</code> extension</li>
-</ul></li>
-<li>Chapter 3: Visualisation experiment
-<ul>
-<li>Based on AEMO case study</li>
+<li>Two dimensions = No interference</li>
+<li>Normal visualization = GOOD!</li>
+<li>Uncertainty visualization = BAD!</li>
 </ul></li>
 </ul>
 </section>
-<section id="progress-to-date" class="slide level2">
-<h2>Progress to date</h2>
+<section id="signal-suppression" class="slide level2">
+<h2>Signal suppression</h2>
 <ul>
-<li>Chapter 1 was submitted to the journal <em>Annual Reviews of Statistics and It’s Applications</em> for publication, and is now an invited contribution to Volume 14 of the Journal.</li>
-<li><code>ggdibbler</code> has been submitted to CRAN</li>
-<li>Currently working on <code>ggdibbler</code> paper</li>
+<li>Visualising uncertainty as noise.</li>
+<li>The error (noise) <em>should</em> interfere with our reading of the temperature (signal)</li>
+<li>But <em>only</em> when the signal has high error</li>
 </ul>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
 </section>
 <section id="ggdibbler-use" class="slide level2">
 <h2>ggdibbler use</h2>
@@ -1575,8 +1660,11 @@ Harriet Mason
 </tbody>
 </table>
 </section>
-<section id="future-work" class="slide level2">
-<h2>Future Work</h2>
+<section id="potential-limitations" class="slide level2">
+<h2>Potential Limitations</h2>
+</section>
+<section id="conclusion-future-work" class="slide level2">
+<h2>Conclusion &amp; Future Work</h2>
 <ul>
 <li>Different types of plots (e.g.&nbsp;scatter plot)</li>
 <li>Different data types for the uncertainty. Currently only have uncertainty in estimates, but could have uncertainty in location in a map for example.</li>
@@ -1618,23 +1706,23 @@ Harriet Mason
 
 
 ```{=html}
-<div id="dytsxoqdrt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dytsxoqdrt table {
+<div id="ivcxzvwuzr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ivcxzvwuzr table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dytsxoqdrt thead, #dytsxoqdrt tbody, #dytsxoqdrt tfoot, #dytsxoqdrt tr, #dytsxoqdrt td, #dytsxoqdrt th {
+#ivcxzvwuzr thead, #ivcxzvwuzr tbody, #ivcxzvwuzr tfoot, #ivcxzvwuzr tr, #ivcxzvwuzr td, #ivcxzvwuzr th {
   border-style: none;
 }
 
-#dytsxoqdrt p {
+#ivcxzvwuzr p {
   margin: 0;
   padding: 0;
 }
 
-#dytsxoqdrt .gt_table {
+#ivcxzvwuzr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1660,12 +1748,12 @@ Harriet Mason
   border-left-color: #D3D3D3;
 }
 
-#dytsxoqdrt .gt_caption {
+#ivcxzvwuzr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dytsxoqdrt .gt_title {
+#ivcxzvwuzr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1677,7 +1765,7 @@ Harriet Mason
   border-bottom-width: 0;
 }
 
-#dytsxoqdrt .gt_subtitle {
+#ivcxzvwuzr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1689,7 +1777,7 @@ Harriet Mason
   border-top-width: 0;
 }
 
-#dytsxoqdrt .gt_heading {
+#ivcxzvwuzr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1701,13 +1789,13 @@ Harriet Mason
   border-right-color: #D3D3D3;
 }
 
-#dytsxoqdrt .gt_bottom_border {
+#ivcxzvwuzr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dytsxoqdrt .gt_col_headings {
+#ivcxzvwuzr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1722,7 +1810,7 @@ Harriet Mason
   border-right-color: #D3D3D3;
 }
 
-#dytsxoqdrt .gt_col_heading {
+#ivcxzvwuzr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1742,7 +1830,7 @@ Harriet Mason
   overflow-x: hidden;
 }
 
-#dytsxoqdrt .gt_column_spanner_outer {
+#ivcxzvwuzr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1754,15 +1842,15 @@ Harriet Mason
   padding-right: 4px;
 }
 
-#dytsxoqdrt .gt_column_spanner_outer:first-child {
+#ivcxzvwuzr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dytsxoqdrt .gt_column_spanner_outer:last-child {
+#ivcxzvwuzr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dytsxoqdrt .gt_column_spanner {
+#ivcxzvwuzr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1774,11 +1862,11 @@ Harriet Mason
   width: 100%;
 }
 
-#dytsxoqdrt .gt_spanner_row {
+#ivcxzvwuzr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dytsxoqdrt .gt_group_heading {
+#ivcxzvwuzr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1804,7 +1892,7 @@ Harriet Mason
   text-align: left;
 }
 
-#dytsxoqdrt .gt_empty_group_heading {
+#ivcxzvwuzr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1819,15 +1907,15 @@ Harriet Mason
   vertical-align: middle;
 }
 
-#dytsxoqdrt .gt_from_md > :first-child {
+#ivcxzvwuzr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dytsxoqdrt .gt_from_md > :last-child {
+#ivcxzvwuzr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dytsxoqdrt .gt_row {
+#ivcxzvwuzr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1846,7 +1934,7 @@ Harriet Mason
   overflow-x: hidden;
 }
 
-#dytsxoqdrt .gt_stub {
+#ivcxzvwuzr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1859,7 +1947,7 @@ Harriet Mason
   padding-right: 5px;
 }
 
-#dytsxoqdrt .gt_stub_row_group {
+#ivcxzvwuzr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1873,15 +1961,15 @@ Harriet Mason
   vertical-align: top;
 }
 
-#dytsxoqdrt .gt_row_group_first td {
+#ivcxzvwuzr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dytsxoqdrt .gt_row_group_first th {
+#ivcxzvwuzr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dytsxoqdrt .gt_summary_row {
+#ivcxzvwuzr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1891,16 +1979,16 @@ Harriet Mason
   padding-right: 5px;
 }
 
-#dytsxoqdrt .gt_first_summary_row {
+#ivcxzvwuzr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dytsxoqdrt .gt_first_summary_row.thick {
+#ivcxzvwuzr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dytsxoqdrt .gt_last_summary_row {
+#ivcxzvwuzr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1910,7 +1998,7 @@ Harriet Mason
   border-bottom-color: #D3D3D3;
 }
 
-#dytsxoqdrt .gt_grand_summary_row {
+#ivcxzvwuzr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1920,7 +2008,7 @@ Harriet Mason
   padding-right: 5px;
 }
 
-#dytsxoqdrt .gt_first_grand_summary_row {
+#ivcxzvwuzr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1930,7 +2018,7 @@ Harriet Mason
   border-top-color: #D3D3D3;
 }
 
-#dytsxoqdrt .gt_last_grand_summary_row_top {
+#ivcxzvwuzr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1940,11 +2028,11 @@ Harriet Mason
   border-bottom-color: #D3D3D3;
 }
 
-#dytsxoqdrt .gt_striped {
+#ivcxzvwuzr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dytsxoqdrt .gt_table_body {
+#ivcxzvwuzr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1953,7 +2041,7 @@ Harriet Mason
   border-bottom-color: #D3D3D3;
 }
 
-#dytsxoqdrt .gt_footnotes {
+#ivcxzvwuzr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1967,7 +2055,7 @@ Harriet Mason
   border-right-color: #D3D3D3;
 }
 
-#dytsxoqdrt .gt_footnote {
+#ivcxzvwuzr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1976,7 +2064,7 @@ Harriet Mason
   padding-right: 5px;
 }
 
-#dytsxoqdrt .gt_sourcenotes {
+#ivcxzvwuzr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1990,7 +2078,7 @@ Harriet Mason
   border-right-color: #D3D3D3;
 }
 
-#dytsxoqdrt .gt_sourcenote {
+#ivcxzvwuzr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1998,72 +2086,72 @@ Harriet Mason
   padding-right: 5px;
 }
 
-#dytsxoqdrt .gt_left {
+#ivcxzvwuzr .gt_left {
   text-align: left;
 }
 
-#dytsxoqdrt .gt_center {
+#ivcxzvwuzr .gt_center {
   text-align: center;
 }
 
-#dytsxoqdrt .gt_right {
+#ivcxzvwuzr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dytsxoqdrt .gt_font_normal {
+#ivcxzvwuzr .gt_font_normal {
   font-weight: normal;
 }
 
-#dytsxoqdrt .gt_font_bold {
+#ivcxzvwuzr .gt_font_bold {
   font-weight: bold;
 }
 
-#dytsxoqdrt .gt_font_italic {
+#ivcxzvwuzr .gt_font_italic {
   font-style: italic;
 }
 
-#dytsxoqdrt .gt_super {
+#ivcxzvwuzr .gt_super {
   font-size: 65%;
 }
 
-#dytsxoqdrt .gt_footnote_marks {
+#ivcxzvwuzr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dytsxoqdrt .gt_asterisk {
+#ivcxzvwuzr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dytsxoqdrt .gt_indent_1 {
+#ivcxzvwuzr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dytsxoqdrt .gt_indent_2 {
+#ivcxzvwuzr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dytsxoqdrt .gt_indent_3 {
+#ivcxzvwuzr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dytsxoqdrt .gt_indent_4 {
+#ivcxzvwuzr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dytsxoqdrt .gt_indent_5 {
+#ivcxzvwuzr .gt_indent_5 {
   text-indent: 25px;
 }
 
-#dytsxoqdrt .katex-display {
+#ivcxzvwuzr .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#dytsxoqdrt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ivcxzvwuzr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>

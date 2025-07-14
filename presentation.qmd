@@ -31,15 +31,60 @@ options(digits=3,
         repr.plot.height=8)
 ```
 
+# Talk (& Thesis) Overview
 
-# Introduction: Communicate a Spatial Trend
+## This talk
+- Thesis summary
+- Timeline
+  - Chapter 1: Literature review
+  - Chapter 2: Software
+  - Chapter 3: Visualisation Experiment
+- Potential limitations
+- Conclusion & Future Work
 
-## Emergency!
-- Reports that temperature in Iowa is weird as hell!
-- Very serious!!
-- Need to communicate this weird temperature issue to the public!!!
+## Thesis Overview & Progress {.smaller}
+- Chapter 1: The Noisy Work of Uncertainty Visualisation
+  - Work through existing visualisation approaches
+  - What is signal suppression? What allows us to do it well?
+  - Status:
+    - Finished and submitted to the journal *Annual Reviews of Statistics and It's Applications* 
+    - Now an invited contribution to Volume 14 of the Journal.
 
-## Fake temperatures in Iowa
+- Chapter 2: `ggdibbler` package 
+  - `ggplot2` extension
+  - Status:
+    - Package has been submitted to CRAN
+    - Currently working on paper
+
+## Thesis Overview & Progress {.smaller}
+
+- Chapter 3: Visualisation experiment
+  - Evaluate plots based on how effective they are at signal suppression
+  - Based on AEMO case study
+  - Status:
+    - I hope someone at AEMO answers my emails
+
+
+
+# Chapter 1: <br> The Noisy Work of Uncertainty Visualisation
+
+## A strange emergency I invented for this talk
+:::: {.columns}
+
+::: {.column width="40%"}
+![](images/img0.jpg)
+:::
+
+::: {.column width="60%"}
+- Reports that average temperatures in Iowa are very odd!
+- Stumping climate scientists who are looking at it!!
+- Need to understand and communicate this weird temperature issue!!!
+
+:::
+
+::::
+
+## Temperatures in Iowa
 :::: {.columns}
 
 ::: {.column width="50%"}
@@ -132,23 +177,6 @@ p_choro
 
 ![](images/img5.jpeg)
 
-## We Need to Include Uncertainty
-:::: {.columns}
-
-::: {.column width="70%"}
-- Failing to include uncertainty can be akin to fraud or lying
-  - Transparency increases trust
-  - Prevents bad actors from exploiting hidden variance
-- Promotes better decisions
-
-:::
-
-::: {.column width="30%"}
-![](images/img7.jpeg)
-:::
-
-::::
-
 
 ## Turns out mum is kind of right....
 :::: {.columns}
@@ -156,7 +184,7 @@ p_choro
 ::: {.column width="60%"}
 - We find out some citizen scientists are using some pretty old tools
 - The standard error **could** be our estimate....
-  - or it could be at least two times that.
+  - or it could be at least four times that.
 - Does the spatial trend still exist in the high variance case?
 :::
 
@@ -174,8 +202,52 @@ p2 <- p_choro + ggtitle("High Variance")
 grid.arrange(p1, p2, nrow = 1)
 ```
 
+## We Need to Include Uncertainty
+:::: {.columns}
 
-## How do we please my mother???
+::: {.column width="70%"}
+- Failing to include uncertainty can be akin to fraud or lying
+  - Transparency increases trust
+  - Prevents bad actors from exploiting hidden variance
+- Promotes better decisions
+
+:::
+
+::: {.column width="30%"}
+![](images/img7.jpeg)
+:::
+
+::::
+
+## We are also communicating with...
+
+![](images/img8.jpeg)
+
+
+## Uncertainty visualisation should...
+:::: {.columns}
+
+::: {.column width="30%"}
+![](images/img9.jpeg)
+:::
+
+::: {.column width="70%"}
+
+<br>
+
+1) Reinforce justified signals
+  - We want my mum to trust the results
+
+
+2) Hide signals that are just noise
+  - I don’t want to see something that isn’t there
+
+:::
+
+::::
+
+
+## How do we please both my mother???
 ```{r}
 #| include: false
 ggplot(toy_temp_mean) +
@@ -185,41 +257,51 @@ ggplot(toy_temp_mean) +
   ylab("Latitude") +
   labs(fill = "Temperature")
 ```
+
 ![](images/img2.jpeg)
 
-## This talk
-1) Introduction: A motivating example 
-2) Thesis Summary:
-  - Overview & Progress to date
-  - Chapter 1: What is signal suppression?
-  - Chapter 2: `ggdibbler`
-  - Chapter 3: A visualisation experiment
-3) Miscelaneous loose ends
-  - Timeline
-  - Future work
-  - Potential limitations
-5) Conclusion 
 
-# Thesis Overview
-## Thesis Overview
-- Chapter 1: The Noisy Work of Uncertainty Visualisation
-  - Literarture review
-  - Define problem
-  - Identify gaps (for chapter 2 and 3)
+## Solution: Add Axis for Uncertainty
+![](images/img10.jpeg)
 
-- Chapter 2: `ggdibbler` package 
-  - `ggplot2` extension
+## Does this work? Not really {.smaller}
+:::: {.columns}
 
-- Chapter 3: Visualisation experiment
-  - Based on AEMO case study
+::: {.column width="25%"}
+![](images/img11.jpeg)
+:::
 
-## Progress to date
-- Chapter 1 was submitted to the journal *Annual Reviews of Statistics and It's Applications* for publication, and is now an invited contribution to Volume 14 of the Journal.
-- `ggdibbler` has been submitted to CRAN 
-- Currently working on `ggdibbler` paper 
+::: {.column width="75%"}
+
+- Pro
+  - Included uncertainty and increased transparency
+- Cons
+  - Non-existent signals are still visible so I am still getting scammed
+  - People can (and do) ignore the uncertainty
+  - 2D palette is harder to read
+    - Colour hues are not a simple 2D space
+  - Using saturation hurts accessibility
+
+:::
+::::
 
 
 
+## Why doesn't this work? 
+- Uncertainty is not just another variable…
+  - We do not have a high-dimension visualisation or basic heuristic problem
+
+- Bivariate Map
+  - Two dimensions = No interference
+  - Normal visualization = GOOD!
+  - Uncertainty visualization = BAD! 
+
+## Signal suppression 
+- Visualising uncertainty as noise.
+- The error (noise) *should* interfere with our reading of the temperature (signal)
+- But *only* when the signal has high error
+
+## 
 
 ## ggdibbler use
 ```{r}
@@ -244,8 +326,9 @@ ggplot(toy_temp_dist) +
 |November 2025 | Finalise and submit user experiment paper. Compile all three papers into the thesis and write the introduction and conclusion. |
 |December 2025 |	Present final versions of ggdibbler and user experiment at ASC. Submit thesis. |
 
+## Potential Limitations
 
-## Future Work
+## Conclusion & Future Work
 - Different types of plots (e.g. scatter plot)
 - Different data types for the uncertainty. Currently only have uncertainty in estimates, but could have uncertainty in location in a map for example.
 - Alternative variations, e.g. bivariate map.
