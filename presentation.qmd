@@ -24,20 +24,25 @@ library(tidyverse)
 library(ggdibbler)
 library(gt)
 library(distributional)
-options(digits=3)
+library(cowplot)
+library(gridExtra)
+options(digits=3, 
+        repr.plot.width=15,
+        repr.plot.height=8)
 ```
 
 
 # Introduction: Communicate a Spatial Trend
 
 ## Emergency!
-- Reports that temperature in Iowa is weird as hell
-- Very serious
-- Need to check if this is true and communicate it to the public
+- Reports that temperature in Iowa is weird as hell!
+- Very serious!!
+- Need to communicate this weird temperature issue to the public!!!
 
 ## Fake temperatures in Iowa
-- Maintain privacy because doing science in Iowa is now a crime.
+:::: {.columns}
 
+::: {.column width="50%"}
 ```{r}
 toy_temp |>
   as_tibble() |>
@@ -47,25 +52,25 @@ toy_temp |>
   tab_header(title = "Citizen Scientist Temperature Collection",
              subtitle = "Data from Iowa Counties") |>
   cols_label( 
-    scientistID = html("Scientist ID"), 
-    county_name = html("County Name"), 
-    recorded_temp = html("Recorded Temp"))
+    scientistID = "Scientist ID", 
+    county_name = "County Name", 
+    recorded_temp = "Recorded Temp")
 ```
+:::
 
-## Looking at the data
-```{r}
-ggplot(toy_temp) +
-  geom_sf(aes(geometry=county_geometry), fill="white") +
-  geom_jitter(aes(x=county_longitude, y=county_latitude, colour=recorded_temp, alpha=0.5), 
-              width=5000, height =5000, alpha=0.7) +
-  theme_minimal() +
-  scale_color_distiller(palette = "YlOrRd", direction= 1) +
-  xlab("Longitude") +
-  ylab("Latitude") +
-  labs(colour = "Temperature") 
-```
+::: {.column width="50%"}
+
+- Maintain privacy because doing science in Iowa is now a crime.
+
+:::
+
+::::
+
 
 ## Calculating Estimates
+:::: {.columns}
+
+::: {.column width="50%"}
 ```{r}
 # Mean data
 toy_temp_mean <- toy_temp |> 
@@ -77,12 +82,20 @@ toy_temp_mean |>
   select(county_name, temp_mean) |>
   head(10) |>
   gt()|>
-  tab_header(title = "Average Citizen Scientist Temperature",
+  tab_header(title = "Average Temperature",
              subtitle = "Estimates for Iowa Counties") |>
   cols_label(
-    county_name = html("County Name"), 
-    temp_mean = html("Mean Temperature"))
+    county_name = "County Name", 
+    temp_mean = "Mean Temperature")
 ```
+:::
+
+::: {.column width="50%"}
+- Can you see the weird temperature trend?
+:::
+
+::::
+
 
 ## Choropleth Map
 ```{r}
@@ -92,76 +105,77 @@ p_choro <- ggplot(toy_temp_mean) +
   scale_fill_distiller(palette = "YlOrRd", direction= 1) +
   xlab("Longitude") +
   ylab("Latitude") +
-  labs(fill = "Temperature")
+  labs(fill = "Temperature") +
+  ggtitle("Choropleth Map")
 p_choro
 ```
 
 ## Why communicate with a visualisation?
-:::: {.columns}
 
-::: {.column width="40%"}
 - "Ah I see"
 - Utilises lizard brain
 - Conveys a large amount of information at once
-:::
 
-::: {.column width="60%"}
+
 ```{r}
+#| fig-align: center
 p_choro
 ```
+
+## Fine if we are communicating with...
+![](images/img3.jpg)
+
+## Harder if we are communicating with...
+![](images/img4.jpeg)
+
+## Oh no, a hurdle
+
+![](images/img5.jpeg)
+
+## We Need to Include Uncertainty
+:::: {.columns}
+
+::: {.column width="70%"}
+- Failing to include uncertainty can be akin to fraud or lying
+  - Transparency increases trust
+  - Prevents bad actors from exploiting hidden variance
+- Promotes better decisions
+
+:::
+
+::: {.column width="30%"}
+![](images/img7.jpeg)
 :::
 
 ::::
 
 
+## Turns out mum is kind of right....
+:::: {.columns}
 
+::: {.column width="60%"}
+- We find out some citizen scientists are using some pretty old tools
+- The standard error **could** be our estimate....
+  - or it could be at least two times that.
+- Does the spatial trend still exist in the high variance case?
+:::
 
+::: {.column width="40%"}
+![](images/img6.jpeg)
+:::
 
-## Estimate as a Mean and Standard Error
+::::
+
+## Spot the difference
 ```{r}
-toy_temp_est <- toy_temp |> 
-  group_by(county_name) |>
-  summarise(temp_mean = mean(recorded_temp),
-            temp_se = sd(recorded_temp)/sqrt(n())) 
-
-toy_temp_est |> 
-  as_tibble() |>
-  select(county_name, temp_mean, temp_se) |>
-  head(10) |>
-  gt()|>
-  tab_header(title = "Average Citizen Scientist Temperature",
-             subtitle = "Estimates for Iowa Counties") |>
-  tab_spanner(
-    label = "Temperature",
-    columns = c(temp_mean, temp_se)) |>
-  cols_label(
-    county_name = html("County Name"), 
-    temp_mean = html("Mean"),
-    temp_se = html("Standard Error"))
+# same plot twice lol
+p1 <- p_choro + ggtitle("Low Variance")
+p2 <- p_choro + ggtitle("High Variance")
+grid.arrange(p1, p2, nrow = 1)
 ```
 
-## Estimate as a Distribution
 
-```{r}
-toy_temp_dist <- toy_temp_est |> 
-  mutate(temp_dist = dist_normal(temp_mean, temp_se)) |>
-  select(county_name, temp_dist) 
-
-toy_temp_dist |> 
-  as_tibble() |>
-  select(county_name, temp_dist) |>
-  head(10) |>
-  gt() |>
-  tab_header(title = "Average Citizen Scientist Temperature",
-             subtitle = "Estimates for Iowa Counties") |>
-  cols_label(
-    county_name = html("County Name"), 
-    temp_dist = html("Mean Temperature"))
-```
-
-*(praise be unto Mitch's distributional Package)*
-
-## How to include in previous map?
+## How do we please my mother???
 ```{r}
 #| include: false
 ggplot(toy_temp_mean) +
@@ -172,11 +186,6 @@ ggplot(toy_temp_mean) +
   labs(fill = "Temperature")
 ```
 ![](images/img2.jpeg)
-
-## Other Cases
-- Visualisations where values are actually estimates
-  - e.g. Statistical summaries
-  - e.g. Using data from ABS (or other government organisation)
 
 ## This talk
 1) Introduction: A motivating example 
@@ -244,3 +253,77 @@ ggplot(toy_temp_dist) +
 - Entirely new approaches
 - Want to add dibble object so that it is automatic.
 - Should include density objects as a "stat_identity" option for the sake of completeness.
+
+## Other Cases
+- Visualisations where values are actually estimates
+  - e.g. Statistical summaries
+  - e.g. Using data from ABS (or other government organisation)
+  
+<!--
+## Looking at the data
+```{r}
+ggplot(toy_temp) +
+  geom_sf(aes(geometry=county_geometry), fill="white") +
+  geom_jitter(aes(x=county_longitude, y=county_latitude, colour=recorded_temp, alpha=0.5), 
+              width=5000, height =5000, alpha=0.7) +
+  theme_minimal() +
+  scale_color_distiller(palette = "YlOrRd", direction= 1) +
+  xlab("Longitude") +
+  ylab("Latitude") +
+  labs(colour = "Temperature") 
+```
+
+## Estimate as a Mean and Standard Error
+```{r}
+toy_temp_est <- toy_temp |> 
+  group_by(county_name) |>
+  summarise(temp_mean = mean(recorded_temp),
+            temp_se = sd(recorded_temp)/sqrt(n())) 
+
+toy_temp_est |> 
+  as_tibble() |>
+  select(county_name, temp_mean, temp_se) |>
+  head(10) |>
+  gt()|>
+  tab_header(title = "Average Citizen Scientist Temperature",
+             subtitle = "Estimates for Iowa Counties") |>
+  tab_spanner(
+    label = "Temperature",
+    columns = c(temp_mean, temp_se)) |>
+  cols_label(
+    county_name = "County Name", 
+    temp_mean = "Mean",
+    temp_se = "Standard Error")
+```
+## Estimate as a Distribution
+```{r}
+# set large variance multiplier
+m <- 2
+toy_temp_est <- toy_temp |> 
+  group_by(county_name) |>
+  summarise(temp_mean = mean(recorded_temp),
+            temp_se_low = sd(recorded_temp)/sqrt(n()),
+            temp_se_high = 2*temp_se_low) 
+```
+
+```{r}
+#| eval: false
+toy_temp_dist <- toy_temp_est |> 
+  mutate(temp_dist_low = dist_normal(temp_mean, temp_se_low),
+         temp_dist_high = dist_normal(temp_mean, temp_se_high)) |>
+  select(county_name, temp_dist_low, temp_dist_high) 
+
+toy_temp_dist |> 
+  as_tibble() |>
+  select(county_name, temp_dist_low, temp_dist_high) |>
+  head(10) |>
+  gt() |>
+  tab_header(title = "Average Temperature",
+             subtitle = "Estimates for Iowa Counties") |>
+  cols_label(county_name = "County Name", 
+             temp_dist = "Mean Temperature")
+```
+
+*(praise be unto Mitch's distributional Package)*
+
+-->
