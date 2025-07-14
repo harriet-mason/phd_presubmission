@@ -1,14 +1,20 @@
 ---
 title: "Uncertainty Visualisation for Signal Supression"
-subtitle: "Progress Review"
+subtitle: "Pre-submission Milestone"
 author: "Harriet Mason"
 bibliography: references.bib
 institute: "Supervisors: Di Cook, Sarah Goodwin, Susan Vanderplus"
 format: 
   revealjs: 
+    theme: simple
     slide-number: true
 editor_options: 
   chunk_output_type: console
+title-slide-attributes:
+  data-background-image: /images/img1.jpg
+  data-background-size: contain
+  data-background-opacity: "0.5"
+  smaller: true
 ---
 
 ## Quarto
