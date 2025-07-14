@@ -68,6 +68,11 @@ options(digits=3,
 
 # Chapter 1: <br> The Noisy Work of Uncertainty Visualisation
 
+## A single example
+- We are going to work through a single example for this talk
+- It makes the ideas we are talking about easier to understand
+- I also don't have to do as much work
+
 ## A strange emergency I invented for this talk
 :::: {.columns}
 
@@ -184,7 +189,7 @@ p_choro
 ::: {.column width="60%"}
 - We find out some citizen scientists are using some pretty old tools
 - The standard error **could** be our estimate....
-  - or it could be at least four times that.
+  - or it could be about three times that.
 - Does the spatial trend still exist in the high variance case?
 :::
 
@@ -302,17 +307,68 @@ ggplot(toy_temp_mean) +
 - But *only* when the signal has high error
 
 
-
 ## Solution: blend the colours together!
+![](images/img13.jpeg)
 
 ## Does this work? Kind of...
+:::: {.columns}
+
+::: {.column width="30%"}
+![](images/img15.jpeg)
+:::
+
+::: {.column width="70%"}
+- Pros
+  - Included uncertainty
+  - Non-existent trend gone! 
+  - Uncertainty hard to ignore
+- Cons
+  - Still have 2D Colour palette 
+    - Saturation hurts accessibility
+  - Standard error at which to blend colours is made up
+    - Impossible to align with hypothesis testing
+ 
+ 
+:::
+
+::::
 
 ## Solution: simulate a sample
 
-## Does this work? Almost...
+![](images/img14.jpeg)
 
+## Does this work? Almost!
+:::: {.columns}
+
+::: {.column width="30%"}
+![](images/img16.jpeg)
+:::
+
+::: {.column width="70%"}
+- Pros
+  - Included uncertainty
+  - Non-existent trend gone! 
+  - Uncertainty hard to ignore
+  - 1D colour palette 
+    - No more weird colour space
+    - More accessible
+
+- Cons
+  - Nightmare to make
+
+:::
+
+::::
+
+## Chapter 1 Summary
+- Plot uncertainty with the purpose of ”signal suppression” in mind
+- Not all methods are equal
+  - Sample works pretty well
+  - VSUP also has some potential if we can work out some perception rules
 
 # Chapter 2: ggdibbler
+
+
 
 # Chapter 3: Visualisation Experiment
 
